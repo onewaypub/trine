@@ -1,13 +1,8 @@
-<div id="search-component">
-  <h4>Coworker Search</h4>
-
-  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-
-  <ul class="search-result">
-    <li *ngFor="let coworker of coworkers$ | async" >
-      <a routerLink="/detail/{{coworker.id}}">
+<div  class="dropdown" id="search-component">
+   <input placeholder="Coworker name" aria-label="Coworker name" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+   <div  class="dropdown-menu pull-left" role="menu" style="" aria-labelledby="dropdownMenuButton">
+     <a *ngFor="let coworker of coworkers$ | async" class="dropdown-item" href="#" routerLink="/detail/{{coworker.id}}">
         {{coworker.name}}
       </a>
-    </li>
-  </ul>
+  </div>
 </div>

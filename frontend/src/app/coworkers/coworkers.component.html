@@ -1,21 +1,49 @@
-<h2>My Coworkers</h2>
 
-<div>
-  <label>Coworker name:
-    <input #coworkerName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(coworkerName.value); coworkerName.value=''">
-    add
-  </button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Projekt</th>
+      <th scope="col">Firma</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let coworker of coworkers">
+      <th scope="row">
+           <a routerLink="/detail/{{coworker.id}}">
+		      <span class="badge">{{coworker.id}}</span> 
+		    </a>
+     <td>{{coworker.name}}</td>
+     <td>{{coworker.project}}</td>
+     <td>{{coworker.company}}</td>
+     <td><button class="close" aria-label="Close" title="delete coworker"
+    (click)="delete(coworker)">x</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Mitarbeiter hinzuf&uuml;gen
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Neuen MItarbeiter hinzuf&uuml;gen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		  <input placeholder="Coworker name" aria-label="Coworker name" class="form-control"  #coworkerName />
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+	  <!-- (click) passes input value to add() and then clears the input -->
+      <button type="button" class="btn btn-primary" (click)="add(coworkerName.value); coworkerName.value=''">&Auml;nderungen speichern</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<ul class="coworkers">
-  <li *ngFor="let coworker of coworkers">
-    <a routerLink="/detail/{{coworker.id}}">
-      <span class="badge">{{coworker.id}}</span> {{coworker.name}}
-    </a>
-    <button class="delete" title="delete coworker"
-    (click)="delete(coworker)">x</button>
-  </li>
-</ul>

@@ -1,7 +1,12 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/coworkers">Coworkers</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
+	<a class="navbar-brand" href="#">{{title}}</a>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="#" routerLink="/dashboard">Dashboard</a></li>
+			<li class="nav-item"><a class="nav-link" href="#" routerLink="/coworkers">Mitarbeiter</a></li>
+		</ul>
+		<app-coworkers-search></app-coworkers-search>
+	</div>
 </nav>
-<router-outlet></router-outlet>
 <app-messages></app-messages>
+<router-outlet></router-outlet>
